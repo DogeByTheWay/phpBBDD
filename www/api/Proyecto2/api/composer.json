@@ -1,0 +1,14 @@
+{
+    "name": "d0dge/api",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        },
+        "files": ["src/helpers.php"]
+    },
+    "require": {
+        "bramus/router": "^1.6",
+        "larapack/dd": "^1.1",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
