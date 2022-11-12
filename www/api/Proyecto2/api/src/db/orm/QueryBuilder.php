@@ -60,4 +60,22 @@ class QueryBuilder {
         $this->sql = "INSERT INTO $this->table($fieldsName) VALUES ($fieldsParams)";
         return DB::insert($this->sql, $this->params);
     }
+
+    public function update(int $id,array $data):int{
+        $this->where('id', '=', $id);
+        $fieldsParams = "";
+        foreach ($data as $key => $value) {
+            $fieldsParams .= "$key=:$key,";
+            $this->params[":$key"] =  $value;
+        }
+        $fieldsParams = rtrim($fieldsParams, ',');
+        $this->sql= "UPDATE $this->table SET $fieldsParams $this->where";
+        return DB::update($this->sql,$this->params);
+    }
+
+    public function delete(int $id):int{
+        $this->where('id', '=', $id);
+        $this->sql="DELETE FROM $this->table $this->where";
+        return DB::delete($this->sql,$this->params);
+    }
 }

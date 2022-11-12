@@ -24,12 +24,31 @@ class MoviesController {
         
     }
 
-    public function insert() {
+    public function insert($id) {
         try {
             $data = json_decode(file_get_contents('php://input'), true);
-            $movie = new MovieDTO($data['id'], $data['titulo'], $data['anyo'], $data['duracion']);
+            $movie = new MovieDTO($id, $data['titulo'], $data['anyo'], $data['duracion']);
             MoviesFactory::getService() -> insert($movie);
             HTTPResponse::json(201, "Recurso creado");
+        } catch (\Exception $e) {
+            HTTPResponse::json($e->getCode(), $e->getMessage());
+        }
+    }
+
+    public function update($id){
+        try {
+            $data = json_decode(file_get_contents('php://input'), true);
+            $movie = new MovieDTO($id, $data['titulo'], $data['anyo'], $data['duracion']);
+            MoviesFactory::getService() -> update($id , $movie);
+            HTTPResponse::json(203, "Recurso actualizado");
+        } catch (\Exception $e) {
+            HTTPResponse::json($e->getCode(), $e->getMessage());
+        }
+    }
+    public function delete($id){
+        try {
+            MoviesFactory::getService() -> delete($id);
+            HTTPResponse::json(203, "Recurso eliminado");
         } catch (\Exception $e) {
             HTTPResponse::json($e->getCode(), $e->getMessage());
         }

@@ -33,6 +33,14 @@ class DB{
     public static function insert(string $sql, array $params): int {
         return self::executeNoResult($sql, $params);
     }
+
+    public static function update(string $sql, array $params): int {
+        return self::executeNoResult($sql, $params);
+    }
+
+    public static function delete(string $sql, array $params): int {
+        return self::executeNoResult($sql, $params);
+    }
          
     private static function executeNoResult(string $sql, array $params):int {
         $pdo = DBFactory::getConnection()::connect();
@@ -41,7 +49,7 @@ class DB{
             return $ps->execute($params);    
         } catch (\Throwable $th){
             //throw $th;
-            throw new \Exception("Error al insertar el recurso", 400);
+            throw new \Exception($th->getMessage(), 400);
         }
     }
 }

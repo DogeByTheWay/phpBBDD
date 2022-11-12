@@ -38,11 +38,11 @@ class MoviesDBDAO implements IMoviesDAO {
  }
  
   function update(int $id, MovieDTO $movie): bool {
-     return false;
+    return DB::table('peliculas')->update($id, ['titulo' => $movie->titulo(), 'anyo' => $movie->anyo(), 'duracion' => $movie->duracion()]);
  }
   
   function delete(int $id): bool {
-     return false;
+    return DB::table('peliculas')->delete($id);
  }
 
 

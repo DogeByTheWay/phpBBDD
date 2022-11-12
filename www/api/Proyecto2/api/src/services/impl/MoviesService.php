@@ -32,4 +32,11 @@ function __construct(){
     function insert($movie): bool{
         return $this -> factories -> getDAO() -> create($movie);
     }
+
+    function update($id,$movie):bool{
+        return $this -> factories -> getDAO() -> update($id,$movie);
+    }
+    function delete($id):bool{
+        return $this -> factories -> getDAO() -> delete($id);
+    }
 }
