@@ -42,9 +42,7 @@ INSERT INTO `peliculas` (`id`, `titulo`, `anyo`, `duracion`) VALUES
 (1, 'El padrino', 1972, 175),
 (2, 'El padrino 2', 1974, 200),
 (3, 'Senderos de gloria', 1957, 86),
-(4, 'Primera Plana', 1974, 105),
-(29, 'pruebass', 1999, 300),
-(30, 'pruebass', 1999, 300);
+(4, 'Primera Plana', 1974, 105);
 
 --
 -- Índices para tablas volcadas
