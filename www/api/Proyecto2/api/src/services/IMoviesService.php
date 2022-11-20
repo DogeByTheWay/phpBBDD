@@ -1,6 +1,6 @@
 <?php
 namespace App\services;
-use App\DTO\MovieDTO;
+use App\DTO\impl\MovieDTO;
  
 interface IMoviesService {
     public function all(): array;

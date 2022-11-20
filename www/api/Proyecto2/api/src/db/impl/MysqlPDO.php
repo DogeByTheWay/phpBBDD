@@ -12,7 +12,6 @@ class MysqlPDO implements IPDOConnection{
             $pdo->exec("set names utf8");
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $pdo;
-            echo "Prueba";
         } catch (\PDOException $e) {
             echo  $e ->getMessage();
         }

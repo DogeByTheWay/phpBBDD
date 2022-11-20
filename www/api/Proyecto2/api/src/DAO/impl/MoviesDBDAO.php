@@ -1,7 +1,7 @@
 <?php
 namespace App\DAO\impl;
 use App\DAO\IMoviesDAO;
-use App\DTO\MovieDTO;
+use App\DTO\impl\MovieDTO;
 use App\db\orm\DB;
 class MoviesDBDAO implements IMoviesDAO {
  

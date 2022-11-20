@@ -1,6 +1,6 @@
 <?php
 namespace App\DAO;
-use App\DTO\MovieDTO;
+use App\DTO\impl\MovieDTO;
  
 interface IMoviesDAO {
  

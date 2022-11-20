@@ -10,6 +10,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+SET GLOBAL sql_mode='';
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `peliculas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(50) NOT NULL,
   `anyo` int(11) NOT NULL,
   `duracion` int(11) NOT NULL

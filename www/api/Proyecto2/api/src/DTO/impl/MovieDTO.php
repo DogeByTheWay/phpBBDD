@@ -1,8 +1,9 @@
 <?php
-namespace App\DTO;
+namespace App\DTO\impl;
+use App\DTO\IDTOCheckFields;
 use JsonSerializable;
  
-class MovieDTO implements JsonSerializable{
+class MovieDTO implements JsonSerializable, IDTOCheckFields{
  
     /**
      * @param $id int 
@@ -10,7 +11,7 @@ class MovieDTO implements JsonSerializable{
      * @param $anyo int 
      * @param $duracion int 
      */
-    function __construct(private int $id, private string $titulo, private int $anyo, private int $duracion) 
+    function __construct(private ?int $id, private string $titulo, private int $anyo, private int $duracion) 
     {
         $this->id = $id;
         $this->titulo = $titulo;
@@ -59,5 +60,14 @@ class MovieDTO implements JsonSerializable{
             'anyo' => $this->anyo,
             'duracion' => $this->duracion
         ];      
+    }
+
+    public static function checkFields(?int $id,array $data):MovieDTO{
+        if(isset($data["titulo"]) && isset($data["anyo"]) && isset($data["duracion"])){
+            $movie=new MovieDTO($id,$data["titulo"],$data["anyo"],$data["duracion"]);
+            return $movie;
+        }else{
+            throw new \Exception("Los campos son incorrectos o estan vacios",400);
+        }   
     }
 }

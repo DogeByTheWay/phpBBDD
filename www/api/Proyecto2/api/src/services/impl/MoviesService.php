@@ -2,7 +2,7 @@
 namespace App\services\impl;
  
 use App\services\IMoviesService;
-use App\DTO\MovieDTO;
+use App\DTO\impl\MovieDTO;
 use App\DAO\impl\MoviesStaticDAO;
 use App\DAO\impl\MoviesJSONDAO;
 use App\factories\MoviesFactory;
@@ -23,7 +23,7 @@ function __construct(){
      *
      * @param mixed $id
      *
-     * @return \App\DTO\MovieDTO
+     * @return \App\DTO\impl\MovieDTO
     */
     function find($id): MovieDTO {
         //@TODO

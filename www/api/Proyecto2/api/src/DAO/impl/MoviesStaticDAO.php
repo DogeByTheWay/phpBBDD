@@ -1,7 +1,7 @@
 <?php
 namespace App\DAO\impl;
  
-use App\DTO\MovieDTO;
+use App\DTO\impl\MovieDTO;
 use App\DAO\IMoviesDAO;
 use Exception;
 
