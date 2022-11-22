@@ -19,6 +19,14 @@ class DB{
      
         throw new \Exception("Recurso no encontrado", 404);        
     }
+    public static function selectTwo(string $sql, ?array $params = null): \stdClass {
+        $data = self::execute($sql, $params);
+        if(count($data) > 0) {
+            return (object) $data[0];
+        }
+     
+        throw new \Exception("Recurso no encontrado", 404);        
+    }
     private static function execute(string $sql, ?array $params = null):array {
         $pdo = DBFactory::getConnection()::connect();
         $ps = $pdo->prepare($sql);

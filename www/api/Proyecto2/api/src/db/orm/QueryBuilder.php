@@ -8,6 +8,8 @@ class QueryBuilder {
 
     private string $where = "";
 
+    private string $join="";
+
     private ?array $params = null;
 
     private string $sql;
@@ -29,6 +31,10 @@ class QueryBuilder {
         $this->where = "WHERE $field $condition :$field";
         $this->params[":$field"] = $value;
         return $this;
+    }
+
+    public function join(string $table1,string $campo1, string $table2 ,string $campo2){
+        $this->join ="JOIN $table2 ON $table1.$campo1=$table2.$campo2";
     }
 
     public function get():array {
@@ -77,5 +83,12 @@ class QueryBuilder {
         $this->where('id', '=', $id);
         $this->sql="DELETE FROM $this->table $this->where";
         return DB::delete($this->sql,$this->params);
+    }
+
+    public function getMany(int $id,string $table1,string $table2){
+        $this->join($table1,"id_director",$table2,"id");
+        $this->where('id_director', '=', $id);
+        $this->sql = "SELECT $this->fields FROM $table1 $this->join $this->where";
+        return DB::select($this->sql, $this->params);
     }
 }
